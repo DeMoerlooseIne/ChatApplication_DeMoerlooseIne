@@ -3,11 +3,11 @@ using System.Net.Http.Json;
 
 namespace ChatApplication.Services
 {
-    public class ChatChannelService : IChatChannelApi
+    public class ChatService : IChatService
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ChatChannelService(IHttpClientFactory httpClientFactory)
+        public ChatService(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

@@ -1,6 +1,6 @@
 ﻿namespace ChatApplication.Models
 {
-    public class ChatMessageResult
+    public class ChatMessage
     {
         public int Id { get; set; }
         public string Author { get; set; }

@@ -41,7 +41,7 @@ namespace ChatApplication.Ui
                 c.BaseAddress = new Uri(appSettings.ApiBaseUrl);
             });
 
-            services.AddTransient<ChatChannelService>();
+            services.AddTransient<ChatService>();
             services.AddControllersWithViews();
 
             

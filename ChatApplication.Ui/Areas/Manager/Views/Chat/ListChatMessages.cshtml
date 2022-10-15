@@ -1,0 +1,31 @@
+﻿@model IList<ChatApplication.Models.ChatMessage>
+@{
+    ViewData["Title"] = "List messages from all chatchannels";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+    @if (User.IsInRole("Administrator"))
+    {
+        <a class="btn btn-primary" asp-action="CreateChatMessage">Create chatmessage</a>
+    }
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Message</th>
+                <th>Channel</th>
+                <th>CreatedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var response in Model)
+            {
+                <partial name="RowPartialChatMessage" model="response" />
+            }
+        </tbody>
+    </table>
+
+    <p>@Html.ActionLink("Back to index", "Index")</p>

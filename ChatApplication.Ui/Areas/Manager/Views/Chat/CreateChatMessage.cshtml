@@ -1,0 +1,15 @@
+﻿@model ChatApplication.Models.ChatMessage
+
+@{
+    ViewData["Title"] = "Create a chatmessage";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <partial name="CreateEditPartialChatMessage" model="Model" />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+</form>
+
+<p>@Html.ActionLink("Back to index", "Index")</p>

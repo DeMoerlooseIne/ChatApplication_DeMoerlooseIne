@@ -1,0 +1,45 @@
+﻿@model IList<ChatApplication.Models.ChatMessage>
+@{
+    ViewData["Title"] = "List chatmessages";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (User.IsInRole("Administrator"))
+{
+    <a class="btn btn-primary" asp-action="CreateChatMessage">Aanmaken bericht</a>
+}
+@using (Html.BeginForm("MessagesByChannel", "Chat", FormMethod.Get))
+{
+
+    @Html.DropDownList("channel", (IEnumerable<SelectListItem>)ViewData["MyChannels"])
+    <input type="submit" value="submit" />
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Author</th>
+            <th>Message</th>
+            <th>Channel</th>
+            <th>CreatedAt</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var response in Model)
+            {
+
+                <partial name="RowPartialChatMessage" model="response" />
+
+            }
+        }
+
+    </tbody>
+</table>
+
+<p>@Html.ActionLink("Refresh all messages from all channels", "MessagesByChannel")</p>
+
+<p>@Html.ActionLink("Back to index", "Index")</p>
